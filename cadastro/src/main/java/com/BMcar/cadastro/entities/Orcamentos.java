@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class Orcamentos {
-
+//teste
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long id;
