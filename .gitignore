@@ -1,0 +1,3 @@
+# Ignore files in .mysql-data/db directory
+cadastro/.mysql-data/db/*
+!cadastro/.mysql-data/db/.gitkeep

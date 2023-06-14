@@ -1,0 +1,50 @@
+body {
+    background-color: black;
+    color: orange;
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+    margin-top: 50px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: block;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: orange;
+    color: black;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+#error-message {
+    display: none;
+    color: red;
+    margin-top: 20px;
+}

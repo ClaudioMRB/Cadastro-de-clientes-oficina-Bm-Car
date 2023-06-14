@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <header>
+        <div class="boasVindas1">
+            <div>
+                <h2>Por favor, digite seus dados e clique em cadastrar.</h2>
+            </div>
+        </div>
+    </header>
+	<section class="cliente">
+	<h2>Cadastro</h2>
+	<form id="form-cliente">
+		<label>Nome:</label>
+		<input type="text" name="nome"><br>
+		
+		<label>CPF:</label>
+		<input type="text" name="cpf"><br>
+
+        <label>Email:</label>
+		<input type="text" name="email"><br>
+
+        <label>Password:</label>
+		<input type="text" name="senha"><br>
+	</form>
+</section>
+	<section class="endereco">
+		<form id="form-endereco">
+		<label>Rua:</label>
+		<input type="text" name="rua"><br>
+		
+		<label>Número:</label>
+		<input type="text" name="numero"><br>
+		
+		<label>Bairro:</label>
+		<input type="text" name="bairro"><br>
+		
+		<label>Cidade:</label>
+		<input type="text" name="cidade"><br>
+		
+		<label>UF:</label>
+		<input type="text" name="uf"><br>
+		
+		<label>País:</label>
+		<input type="text" name="pais"><br>
+	</form>
+</section>
+<section class="veiculo">
+	<form id="form-veiculo">
+			<label>Veiculo:</label>
+			<input type="text" name="carro"><br>
+			
+			<label>Cor:</label>
+			<input type="text" name="cor"><br>
+			
+			<label>CC:</label>
+			<input type="text" name="cc"><br>
+			
+			<label>Ano:</label>
+			<input type="text" name="ano"><br>
+			
+			<label>Fabricante:</label>
+			<input type="text" name="fabricante"><br>
+	</form>
+</section>
+<section class="cadastrar">
+	<button type="button" onclick="cadastrar()">Cadastrar</button>
+</section>
+	<script>
+        function cadastrar() {
+            var formCliente = $('#form-cliente').serializeArray();
+            var dataCliente = {};
+            $.each(formCliente, function(index, field) {
+                dataCliente[field.name] = field.value;
+            });
+    
+            var formEndereco = $('#form-endereco').serializeArray();
+            var dataEndereco = {};
+            $.each(formEndereco, function(index, field) {
+                dataEndereco[field.name] = field.value;
+            });
+    
+            var formVeiculo = $('#form-veiculo').serializeArray();
+            var dataVeiculo = {};
+            $.each(formVeiculo, function(index, field) {
+                dataVeiculo[field.name] = field.value;
+            });
+    
+            $.ajax({
+                url: 'http://localhost:8080/cliente',
+                method: 'POST',
+                data: JSON.stringify(dataCliente),
+                contentType: 'application/json',
+                success: function(response) {
+                    $.ajax({
+                        url: 'http://localhost:8080/endereco',
+                        method: 'POST',
+                        data: JSON.stringify(dataEndereco),
+                        contentType: 'application/json',
+                        success: function(response) {
+                            $.ajax({
+                                url: 'http://localhost:8080/veiculo',
+                                method: 'POST',
+                                data: JSON.stringify(dataVeiculo),
+                                contentType: 'application/json',
+                                success: function(response) {
+                                    alert('Cadastro realizado com sucesso!');
+                                    $('#form-cliente')[0].reset();
+                                    $('#form-endereco')[0].reset();
+                                    $('#form-veiculo')[0].reset();
+                                },
+                                error: function(response) {
+                                    alert('Ocorreu um erro ao cadastrar o veículo!');
+                                }
+                            });
+                        },
+                        error: function(response) {
+                            alert('Ocorreu um erro ao cadastrar o endereço!');
+                        }
+                    });
+                },
+                error: function(response) {
+                    alert('Ocorreu um erro ao cadastrar o cliente!');
+                }
+            });
+        }
+    </script>
+	<footer>
+
+	</footer>
+
+</body>
+
+</html>

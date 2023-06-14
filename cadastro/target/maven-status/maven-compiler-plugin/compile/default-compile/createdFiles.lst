@@ -1,0 +1,16 @@
+com\BMcar\cadastro\repositories\ClienteRepository.class
+com\BMcar\cadastro\entities\Endereco.class
+com\BMcar\cadastro\repositories\VeiculoRepository.class
+com\BMcar\cadastro\controllers\VeiculoController.class
+com\BMcar\cadastro\controllers\ClienteController.class
+com\BMcar\cadastro\dto\EnderecoDTO.class
+com\BMcar\cadastro\entities\Cliente.class
+com\BMcar\cadastro\controllers\EnderecoController.class
+com\BMcar\cadastro\services\ClienteService.class
+com\BMcar\cadastro\repositories\EnderecoRepository.class
+com\BMcar\cadastro\services\VeiculoService.class
+com\BMcar\cadastro\dto\VeiculoDTO.class
+com\BMcar\cadastro\dto\ClienteDTO.class
+com\BMcar\cadastro\services\EnderecoService.class
+com\BMcar\cadastro\CadastroApplication.class
+com\BMcar\cadastro\entities\Veiculo.class

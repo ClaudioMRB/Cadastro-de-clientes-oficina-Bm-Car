@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+   <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="login-form">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" id="login-btn">Entrar</button>
+        <button type="button" id="signup-btn" onclick="location.href='cadastro.html'">Cadastrar</button>
+
+    </form>
+
+    <div id="error-message" style="display:none">
+        Usuário ou senha inválidos!
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const loginBtn = document.getElementById('login-btn');
+        const errorMessage = document.getElementById('error-message');
+
+        loginBtn.addEventListener('click', function() {
+          const data = {
+            email: emailInput.value,
+            senha: passwordInput.value
+          };
+
+          fetch('http://localhost:8080/cliente/validar', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Basic ' + btoa(data.email + ':' + data.senha)
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data === true) {
+              window.location.href = 'http://www.youtube.com.br';
+            } else {
+              errorMessage.style.display = 'block';
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        });
+    </script>
+</body>
+</html>
