@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table
+@Table(name = "tb_tecnicos")
 public class Tecnicos {
 
 	@Id
